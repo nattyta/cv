@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/cv/natnael/index.html"
+    }
+  ],
+  "build": {
+    "src": "cv/natnael/index.html",
+    "use": "@vercel/static-build"
+  }
+}

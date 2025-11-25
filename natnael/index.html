@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natnael Takele - Curriculum Vitae</title>
     
+    <!-- Meta tags for SEO and Social Sharing (Best Practices) -->
+    <meta name="description" content="Official Curriculum Vitae of Natnael Takele, Full-Stack Developer and Data Science specialist.">
+    <meta name="author" content="Natnael Takele">
+    
     <!-- External Library for Icons (Font Awesome 6) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Google Font (Inter) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
+    <!-- Start of Internal CSS Styles -->
     <style>
         /* --- CSS VARIABLES (Colors) --- */
         :root {
@@ -36,7 +41,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- HEADER & BUTTONS --- */
+        /* --- HEADER & BUTTONS (Control Bar for Screen View) --- */
         .header-controls {
             max-width: 1200px;
             margin: 0 auto 1.5rem;
@@ -82,10 +87,10 @@
             grid-template-columns: 1fr 2fr;
             min-height: 1200px;
             overflow: hidden;
-            position: relative; /* Context for absolute positioning */
+            position: relative;
         }
 
-        /* --- TOP BANNER --- */
+        /* --- TOP BANNER (Covers 1/3 width) --- */
         .top-banner {
             background-color: var(--left-col-bg);
             height: 200px;
@@ -97,7 +102,7 @@
         .name-title-area {
             position: absolute;
             top: 50%;
-            left: 200px; /* Positioned past the image */
+            left: 200px;
             transform: translateY(-50%);
             color: var(--text-dark);
             z-index: 10;
@@ -118,7 +123,7 @@
         .left-col {
             background-color: var(--left-col-bg);
             padding: 2.5rem;
-            padding-top: 60px; /* Reduced top padding to remove extra space */
+            padding-top: 60px; /* Aligns content under the image */
             position: relative;
         }
         .left-col h3 {
@@ -133,7 +138,7 @@
         /* --- PROFILE PICTURE (Static) --- */
         .picture-container {
             position: absolute;
-            top: 140px; /* Positioned to overlap the top banner */
+            top: 140px; 
             left: 20px;
             z-index: 20;
         }
@@ -144,7 +149,6 @@
             border: 4px solid white;
             object-fit: cover;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            /* Fallback background if image doesn't load */
             background-color: #ccc; 
         }
 
@@ -175,7 +179,7 @@
             color: var(--accent-purple);
         }
         .skills-list a {
-             color: var(--text-dark); /* Ensure links in left column are dark text */
+             color: var(--text-dark);
              text-decoration: none;
         }
 
@@ -224,7 +228,7 @@
             color: var(--accent-purple);
             text-decoration: none;
             transition: color 0.3s;
-            display: flex; /* Aligns link and icon */
+            display: flex;
             align-items: center;
         }
         .project-showcase a:hover {
@@ -234,7 +238,7 @@
         .project-link-item {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             padding-top: 5px;
             margin-top: 5px;
             border-top: 1px solid #eee;
@@ -252,4 +256,182 @@
                 padding: 0;
                 background-color: white;
             }
-            .header-controls
+            .header-controls {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                width: 210mm;
+                height: 297mm;
+            }
+            .cv-paper {
+                grid-template-columns: 1fr 2fr;
+                min-height: 297mm;
+            }
+            .top-banner {
+                height: 150px;
+            }
+            .left-col {
+                padding-top: 150px;
+            }
+            .name-title-area {
+                left: 140px;
+            }
+            .name-title-area h1 {
+                font-size: 2.5rem;
+            }
+            .name-title-area p {
+                font-size: 1.2rem;
+            }
+            /* Ensure all links print in black and are underlined for visibility */
+            .right-col a {
+                color: var(--text-dark) !important;
+                text-decoration: underline !important;
+            }
+            .project-link-item i {
+                 display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Start of Body Content -->
+
+    <!-- Header Controls (Visible on screen, hidden when printing) -->
+    <div class="header-controls">
+        <!-- Assume the root path (/) is your main portfolio -->
+        <a href="/" class="btn-link">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        <button class="btn-pdf" onclick="window.print()">
+            <i class="fas fa-download"></i> Download as PDF
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="cv-paper" id="cv-content">
+            
+            <!-- LEFT COLUMN (Profile, Contact, Skills) -->
+            <div class="left-col">
+                
+                <!-- Profile Picture (Static Image) -->
+                <div class="picture-container">
+                    <!-- IMPORTANT: Ensure 'profile.jpg' is in the same folder as this HTML file -->
+                    <img id="profile-img" class="profile-pic" src="nati_modified.png" alt="Natnael Takele Profile Photo" onerror="this.style.display='none';">
+                </div>
+
+                <h3 style="margin-top: 5rem;">CONTACT</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i> <span>0935519061</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i> <span>natnaeltakele36@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i> <span>Hawassa, Ethiopia</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/natnael-takele-287a5b30b/" target="_blank">LinkedIn Profile</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i> <a href="https://github.com/nattyta" target="_blank">GitHub Profile</a>
+                </div>
+
+                <h3>EDUCATION</h3>
+                <h4 style="font-weight: 700;">Bachelor's in Computer Science</h4>
+                <p style="margin-top: 5px; font-size: 0.9rem;">Infolink University College</p>
+                <p style="font-size: 0.8rem; color: var(--text-light);">2022 - present</p>
+
+                <h3>SKILLS</h3>
+                <ul class="skills-list">
+                    <li><i class="fab fa-python"></i> Python</li>
+                    <li><i class="fab fa-react"></i> React / React Native</li>
+                    <li><i class="fas fa-code"></i> JavaScript / TypeScript</li>
+                    <li><i class="fas fa-database"></i> PostgreSQL / MongoDB / SQL</li>
+                    <li><i class="fas fa-bolt"></i> FastAPI (API/Backend)</li>
+                    <li><i class="fas fa-laptop-code"></i> Electron / Tailwind CSS</li>
+                    <li><i class="fas fa-cogs"></i> ML (Data Science)</li>
+                </ul>
+
+                <h3>LANGUAGE</h3>
+                <ul class="languages-list">
+                    <li>English</li>
+                    <li>Amharic</li>
+                </ul>
+
+            </div>
+
+            <!-- RIGHT COLUMN (Experience) -->
+            <div class="right-col">
+                
+                <!-- Absolute positioned Top Banner for the Right Column -->
+                <div class="top-banner" style="width: calc(100% * 2 / 3); left: calc(100% / 3);"></div>
+
+                <div class="name-title-area">
+                    <h1>NATNAEL TAKELE</h1>
+                    <p>FULL STACK DEVELOPER</p>
+                </div>
+
+                <div style="margin-top: 140px;"></div> <!-- Spacer to push content down -->
+                
+                <h2>ABOUT ME</h2>
+                <p style="margin-bottom: 2rem; font-size: 0.9rem;">
+                    Full-Stack Developer and CS graduate specializing in Python/FastAPI and React. Proven ability to architect and deliver complex, end-to-end solutions, including a commercial hybrid desktop app and a full-stack Telegram platform. Flexible, fast learner with experience in Data Science and professional backend development.
+                </p>
+
+                <h2>PROFESSIONAL EXPERIENCE</h2>
+                <div class="job-item">
+                    <p class="dates">Nov 2024 - Jun 2025</p>
+                    <h3>Plegma</h3>
+                    <h4>Backend Developer</h4>
+                    <ul>
+                        <li>Contributed to key services and systems for client applications, focusing on scalable API development.</li>
+                        <li>Implemented and maintained high-performance backend APIs using modern frameworks.</li>
+                    </ul>
+                </div>
+
+                <div class="job-item">
+                    <p class="dates">Jul 2015 - Aug 2018</p>
+                    <h3>CBE (Commercial Bank of Ethiopia)</h3>
+                    <h4>Data Science Intern</h4>
+                    <ul>
+                        <li>Developed a churn prediction model to improve customer retention strategy.</li>
+                        <li>Performed data cleaning, preprocessing, visualization, and reporting on large financial datasets.</li>
+                    </ul>
+                </div>
+                
+                <h2>PROJECTS & SHOWCASES</h2>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-light);">Explore live deployments of my front-end and full-stack projects:</p>
+                <div class="project-showcase">
+                    <div class="project-link-item">
+                        <a href="https://ankh-omega.vercel.app/index.html" target="_blank">Ankh-Omega (Portfolio)</a>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                    <div class="project-link-item">
+                        <a href="https://be8ty.vercel.app/" target="_blank">Be8ty (E-commerce UI)</a>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                    <div class="project-link-item">
+                        <a href="https://afrozen-creatives.vercel.app/" target="_blank">Afrozen Creatives (Landing Page)</a>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The only JavaScript needed is for the print button -->
+    <script>
+        // We use window.print() and the @media print CSS rules to create the PDF.
+        document.querySelector('.btn-pdf').addEventListener('click', () => {
+             // Set the filename before printing
+             document.title = 'Natnael_Takele_CV';
+             window.print();
+        });
+    </script>
+    <!-- End of Body Content -->
+</body>
+</html>

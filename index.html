@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natnael Takele - Curriculum Vitae</title>
+    <title>Natnael Takele - Full-Stack Developer CV</title>
     
-    <!-- Meta tags for SEO and Social Sharing (Best Practices) -->
+    <!-- Meta tags -->
     <meta name="description" content="Official Curriculum Vitae of Natnael Takele, Full-Stack Developer and Data Science specialist.">
     <meta name="author" content="Natnael Takele">
     
@@ -19,13 +19,13 @@
     <style>
         /* --- CSS VARIABLES (Colors) --- */
         :root {
-            --left-col-bg: #d2d8df; /* Light grey-blue */
-            --accent-purple: #8b3db8; /* A professional purple for accents */
+            --left-col-bg: #d2d8df; /* Light grey-blue from your design */
+            --accent-purple: #8b3db8; 
             --text-dark: #1f2937;
             --text-light: #4b5563;
         }
 
-        /* --- BASE STYLES --- */
+        /* --- BASE STYLES & PRINT RESET --- */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
@@ -33,8 +33,10 @@
             line-height: 1.5;
             margin: 0;
             padding: 0;
+            font-size: 16px; /* Base font size */
         }
-
+        
+        /* Main container for the CV page */
         .container {
             max-width: 1200px;
             margin: 40px auto;
@@ -55,11 +57,9 @@
             color: var(--accent-purple);
             font-weight: 600;
             transition: color 0.3s;
+            display: flex;
+            align-items: center;
         }
-        .btn-link:hover {
-            color: #6d28d9;
-        }
-
         .btn-pdf {
             background-color: var(--accent-purple);
             color: white;
@@ -76,33 +76,32 @@
         .btn-pdf:hover {
             background-color: #6d28d9;
         }
-        .btn-pdf i {
-            margin-right: 8px;
-        }
 
         /* --- CV GRID LAYOUT --- */
         .cv-paper {
             background-color: white;
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            min-height: 1200px;
+            grid-template-columns: 1fr 2fr; /* 33% / 66% split */
+            min-height: 1200px; /* For screen viewing */
             overflow: hidden;
             position: relative;
         }
 
-        /* --- TOP BANNER (Covers 1/3 width) --- */
+        /* --- TOP BANNER --- */
         .top-banner {
             background-color: var(--left-col-bg);
             height: 200px;
             position: absolute;
-            width: calc(100% / 3);
+            /* Extends over the right column */
+            width: 66.666%; 
             top: 0;
-            left: 0;
+            right: 0;
         }
         .name-title-area {
             position: absolute;
             top: 50%;
-            left: 200px;
+            /* Left adjusted to start after the left column ends */
+            left: 35%; 
             transform: translateY(-50%);
             color: var(--text-dark);
             z-index: 10;
@@ -125,6 +124,7 @@
             padding: 2.5rem;
             padding-top: 60px; /* Aligns content under the image */
             position: relative;
+            z-index: 5;
         }
         .left-col h3 {
             font-size: 1.1rem;
@@ -135,7 +135,7 @@
             border-bottom: 2px solid rgba(0, 0, 0, 0.1);
         }
 
-        /* --- PROFILE PICTURE (Static) --- */
+        /* --- PROFILE PICTURE (Interactive) --- */
         .picture-container {
             position: absolute;
             top: 140px; 
@@ -150,6 +150,7 @@
             object-fit: cover;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             background-color: #ccc; 
+            cursor: pointer;
         }
 
         /* --- CONTACT & SKILLS --- */
@@ -163,8 +164,14 @@
             width: 25px;
             text-align: center;
             color: var(--accent-purple);
+            margin-right: 8px;
         }
-        .skills-list, .languages-list {
+        .contact-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .skills-list {
             list-style: none;
             padding: 0;
         }
@@ -177,15 +184,15 @@
         .skills-list i {
             margin-right: 12px;
             color: var(--accent-purple);
-        }
-        .skills-list a {
-             color: var(--text-dark);
-             text-decoration: none;
+            width: 20px;
+            text-align: center;
         }
 
         /* --- RIGHT COLUMN --- */
         .right-col {
             padding: 2.5rem;
+            /* Content starts below the banner's height */
+            padding-top: 220px; 
         }
         .right-col h2 {
             font-size: 1.5rem;
@@ -223,18 +230,6 @@
         }
         
         /* --- PROJECT SHOWCASE --- */
-        .project-showcase a {
-            font-weight: 600;
-            color: var(--accent-purple);
-            text-decoration: none;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        .project-showcase a:hover {
-            color: #6d28d9;
-            text-decoration: underline;
-        }
         .project-link-item {
             display: flex;
             justify-content: space-between;
@@ -244,6 +239,11 @@
             border-top: 1px solid #eee;
             font-size: 0.9rem;
         }
+        .project-link-item a {
+            font-weight: 600;
+            color: var(--accent-purple);
+            text-decoration: none;
+        }
         .project-link-item i {
             font-size: 0.7rem;
             margin-left: 10px;
@@ -251,57 +251,30 @@
 
         /* --- PRINT STYLES (PDF Optimization) --- */
         @media print {
-            body {
-                margin: 0;
-                padding: 0;
-                background-color: white;
-            }
-            .header-controls {
-                display: none;
-            }
-            .container {
-                box-shadow: none;
-                margin: 0;
-                width: 210mm;
-                height: 297mm;
-            }
-            .cv-paper {
-                grid-template-columns: 1fr 2fr;
-                min-height: 297mm;
-            }
-            .top-banner {
-                height: 150px;
-            }
-            .left-col {
-                padding-top: 150px;
-            }
-            .name-title-area {
-                left: 140px;
-            }
-            .name-title-area h1 {
-                font-size: 2.5rem;
-            }
-            .name-title-area p {
-                font-size: 1.2rem;
-            }
-            /* Ensure all links print in black and are underlined for visibility */
-            .right-col a {
-                color: var(--text-dark) !important;
-                text-decoration: underline !important;
-            }
-            .project-link-item i {
-                 display: none;
-            }
+            body { background-color: white; margin: 0; padding: 0; }
+            .header-controls { display: none; }
+            .container { box-shadow: none; margin: 0; width: 210mm; height: 297mm; }
+            .cv-paper { grid-template-columns: 1fr 2fr; min-height: 297mm; }
+            .top-banner { height: 140px; }
+            .left-col { padding-top: 150px; padding: 1.5rem; }
+            .right-col { padding: 1.5rem; padding-top: 150px; }
+            .name-title-area { left: 140px; }
+            .name-title-area h1 { font-size: 2.2rem; }
+            .name-title-area p { font-size: 1.1rem; }
+            .picture-container { top: 100px; left: 15px; }
+            .profile-pic { width: 120px; height: 120px; }
+            .job-item { margin-bottom: 1rem; }
+            .job-item ul { margin-top: 2px; }
+            /* Force links to be black and underlined for print visibility */
+            a { color: var(--text-dark) !important; text-decoration: underline !important; }
+            .project-link-item i { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Start of Body Content -->
-
     <!-- Header Controls (Visible on screen, hidden when printing) -->
     <div class="header-controls">
-        <!-- Assume the root path (/) is your main portfolio -->
         <a href="/" class="btn-link">
             <i class="fas fa-arrow-left"></i> Back to Portfolio
         </a>
@@ -316,10 +289,14 @@
             <!-- LEFT COLUMN (Profile, Contact, Skills) -->
             <div class="left-col">
                 
-                <!-- Profile Picture (Static Image) -->
+                <!-- Profile Picture Container (Accepts Upload) -->
                 <div class="picture-container">
-                    <!-- IMPORTANT: Ensure 'profile.jpg' is in the same folder as this HTML file -->
-                    <img id="profile-img" class="profile-pic" src="profile.jpg" alt="Natnael Takele Profile Photo" onerror="this.style.display='none';">
+                    <label for="file-upload">
+                        <!-- IMPORTANT: Replace 'nati_modified.png' with your image file name -->
+                        <img id="profile-img" class="profile-pic" src="nati_modified.png" alt="Natnael Takele Profile Photo" style="cursor: pointer;">
+                        <!-- Hidden input for file selection -->
+                        <input type="file" id="file-upload" accept="image/*" style="display: none;">
+                    </label>
                 </div>
 
                 <h3 style="margin-top: 5rem;">CONTACT</h3>
@@ -348,11 +325,12 @@
                 <ul class="skills-list">
                     <li><i class="fab fa-python"></i> Python</li>
                     <li><i class="fab fa-react"></i> React / React Native</li>
-                    <li><i class="fas fa-code"></i> JavaScript / TypeScript</li>
+                    <li><i class="fas fa-terminal"></i> JavaScript / TypeScript</li>
                     <li><i class="fas fa-database"></i> PostgreSQL / MongoDB / SQL</li>
                     <li><i class="fas fa-bolt"></i> FastAPI (API/Backend)</li>
-                    <li><i class="fas fa-laptop-code"></i> Electron / Tailwind CSS</li>
                     <li><i class="fas fa-cogs"></i> ML (Data Science)</li>
+                    <li><i class="fas fa-desktop"></i> Electron / Tailwind CSS</li>
+                    <li><i class="fas fa-code-branch"></i> Git / Version Control</li>
                 </ul>
 
                 <h3>LANGUAGE</h3>
@@ -366,15 +344,12 @@
             <!-- RIGHT COLUMN (Experience) -->
             <div class="right-col">
                 
-                <!-- Absolute positioned Top Banner for the Right Column -->
-                <div class="top-banner" style="width: calc(100% * 2 / 3); left: calc(100% / 3);"></div>
-
+                <!-- TOP BANNER & NAME/TITLE AREA -->
+                <div class="top-banner"></div>
                 <div class="name-title-area">
                     <h1>NATNAEL TAKELE</h1>
                     <p>FULL STACK DEVELOPER</p>
                 </div>
-
-                <div style="margin-top: 140px;"></div> <!-- Spacer to push content down -->
                 
                 <h2>ABOUT ME</h2>
                 <p style="margin-bottom: 2rem; font-size: 0.9rem;">
@@ -405,16 +380,21 @@
                 <h2>PROJECTS & SHOWCASES</h2>
                 <p style="margin-bottom: 1rem; font-size: 0.9rem; color: var(--text-light);">Explore live deployments of my front-end and full-stack projects:</p>
                 <div class="project-showcase">
+                    <!-- REMEMBER TO REPLACE PLACEHOLDER URLS -->
                     <div class="project-link-item">
-                        <a href="https://ankh-omega.vercel.app/index.html" target="_blank">Ankh-Omega (Portfolio)</a>
+                        <a href="YOUR_FOOD_DELIVERY_URL" target="_blank">Full-Stack Food Delivery System</a>
                         <i class="fas fa-external-link-alt"></i>
                     </div>
                     <div class="project-link-item">
-                        <a href="https://be8ty.vercel.app/" target="_blank">Be8ty (E-commerce UI)</a>
+                        <a href="YOUR_GITHUB_FOR_INVENTORY" target="_blank">Commercial Desktop Inventory System (GitHub)</a>
                         <i class="fas fa-external-link-alt"></i>
                     </div>
                     <div class="project-link-item">
-                        <a href="https://afrozen-creatives.vercel.app/" target="_blank">Afrozen Creatives (Landing Page)</a>
+                        <a href="https://t.me/YOUR_BOT_USERNAME" target="_blank">Telegram Matching Bot (Live Bot)</a>
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                    <div class="project-link-item">
+                        <a href="https://github.com/nattyta" target="_blank">All Projects on GitHub</a>
                         <i class="fas fa-external-link-alt"></i>
                     </div>
                 </div>
@@ -423,15 +403,29 @@
         </div>
     </div>
 
-    <!-- The only JavaScript needed is for the print button -->
+    <!-- Final JavaScript for Picture Upload (Pure JS, no React) -->
     <script>
-        // We use window.print() and the @media print CSS rules to create the PDF.
-        document.querySelector('.btn-pdf').addEventListener('click', () => {
-             // Set the filename before printing
-             document.title = 'Natnael_Takele_CV';
-             window.print();
-        });
+        const fileUpload = document.getElementById('file-upload');
+        const profileImg = document.getElementById('profile-img');
+
+        // Check if the file uploader and image element exist
+        if (fileUpload && profileImg) {
+            fileUpload.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        // Set the source of the image to the uploaded file's data URL
+                        profileImg.src = e.target.result;
+                        profileImg.style.display = 'block'; // Make sure the image is visible
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        // PDF Print script (the button handler)
+        // document.querySelector('.btn-pdf') already handles window.print()
     </script>
-    <!-- End of Body Content -->
 </body>
 </html>

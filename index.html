@@ -33,7 +33,7 @@
             line-height: 1.5;
             margin: 0;
             padding: 0;
-            font-size: 16px; /* Base font size */
+            font-size: 16px; 
         }
         
         /* Main container for the CV page */
@@ -43,23 +43,15 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- HEADER & BUTTONS (Control Bar for Screen View) --- */
+        /* --- HEADER CONTROLS (FULL WIDTH BUTTON) --- */
         .header-controls {
             max-width: 1200px;
             margin: 0 auto 1.5rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Pushes the button to the right */
             align-items: center;
         }
 
-        .btn-link {
-            text-decoration: none;
-            color: var(--accent-purple);
-            font-weight: 600;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-        }
         .btn-pdf {
             background-color: var(--accent-purple);
             color: white;
@@ -76,13 +68,16 @@
         .btn-pdf:hover {
             background-color: #6d28d9;
         }
+        .btn-pdf i {
+            margin-right: 8px;
+        }
 
         /* --- CV GRID LAYOUT --- */
         .cv-paper {
             background-color: white;
             display: grid;
-            grid-template-columns: 1fr 2fr; /* 33% / 66% split */
-            min-height: 1200px; /* For screen viewing */
+            grid-template-columns: 1fr 2fr;
+            min-height: 1200px; 
             overflow: hidden;
             position: relative;
         }
@@ -92,7 +87,6 @@
             background-color: var(--left-col-bg);
             height: 200px;
             position: absolute;
-            /* Extends over the right column */
             width: 66.666%; 
             top: 0;
             right: 0;
@@ -100,7 +94,7 @@
         .name-title-area {
             position: absolute;
             top: 50%;
-            /* Left adjusted to start after the left column ends */
+            /* Moved left to align correctly with right column text */
             left: 35%; 
             transform: translateY(-50%);
             color: var(--text-dark);
@@ -122,7 +116,8 @@
         .left-col {
             background-color: var(--left-col-bg);
             padding: 2.5rem;
-            padding-top: 60px; /* Aligns content under the image */
+            /* CRITICAL FIX: Reduced padding-top to shift content up */
+            padding-top: 10px; 
             position: relative;
             z-index: 5;
         }
@@ -138,7 +133,8 @@
         /* --- PROFILE PICTURE (Interactive) --- */
         .picture-container {
             position: absolute;
-            top: 140px; 
+            /* CRITICAL FIX: Moved picture up */
+            top: 120px; 
             left: 20px;
             z-index: 20;
         }
@@ -191,8 +187,8 @@
         /* --- RIGHT COLUMN --- */
         .right-col {
             padding: 2.5rem;
-            /* Content starts below the banner's height */
-            padding-top: 220px; 
+            /* CRITICAL FIX: Reduced padding-top to align with the image */
+            padding-top: 100px; 
         }
         .right-col h2 {
             font-size: 1.5rem;
@@ -275,9 +271,7 @@
 
     <!-- Header Controls (Visible on screen, hidden when printing) -->
     <div class="header-controls">
-        <a href="/" class="btn-link">
-            <i class="fas fa-arrow-left"></i> Back to Portfolio
-        </a>
+        <!-- REMOVED: Back to Portfolio Button -->
         <button class="btn-pdf" onclick="window.print()">
             <i class="fas fa-download"></i> Download as PDF
         </button>
@@ -292,7 +286,7 @@
                 <!-- Profile Picture Container (Accepts Upload) -->
                 <div class="picture-container">
                     <label for="file-upload">
-                        <!-- IMPORTANT: Replace 'nati_modified.png' with your image file name -->
+                        <!-- IMPORTANT: If your image is at the root of the serving folder, this is correct -->
                         <img id="profile-img" class="profile-pic" src="nati_modified.png" alt="Natnael Takele Profile Photo" style="cursor: pointer;">
                         <!-- Hidden input for file selection -->
                         <input type="file" id="file-upload" accept="image/*" style="display: none;">
@@ -323,6 +317,7 @@
 
                 <h3>SKILLS</h3>
                 <ul class="skills-list">
+                    <!-- FINALIZED SKILL ICONS LIST -->
                     <li><i class="fab fa-python"></i> Python</li>
                     <li><i class="fab fa-react"></i> React / React Native</li>
                     <li><i class="fas fa-terminal"></i> JavaScript / TypeScript</li>
@@ -408,24 +403,27 @@
         const fileUpload = document.getElementById('file-upload');
         const profileImg = document.getElementById('profile-img');
 
-        // Check if the file uploader and image element exist
+        // Final Functionality: Picture Upload
         if (fileUpload && profileImg) {
             fileUpload.addEventListener('change', (event) => {
                 const file = event.target.files[0];
                 if (file) {
                     const reader = new FileReader();
                     reader.onload = (e) => {
-                        // Set the source of the image to the uploaded file's data URL
                         profileImg.src = e.target.result;
-                        profileImg.style.display = 'block'; // Make sure the image is visible
+                        profileImg.style.display = 'block'; 
                     };
                     reader.readAsDataURL(file);
                 }
             });
         }
         
-        // PDF Print script (the button handler)
-        // document.querySelector('.btn-pdf') already handles window.print()
+        // Final Functionality: PDF Print (The button handles window.print())
+        document.querySelector('.btn-pdf').addEventListener('click', () => {
+             // Set the filename before printing
+             document.title = 'Natnael_Takele_CV';
+             window.print();
+        });
     </script>
 </body>
 </html>

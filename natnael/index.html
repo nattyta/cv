@@ -43,7 +43,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* --- HEADER CONTROLS (FULL WIDTH BUTTON) --- */
+        /* --- HEADER & BUTTONS (Control Bar for Screen View) --- */
         .header-controls {
             max-width: 1200px;
             margin: 0 auto 1.5rem;
@@ -85,7 +85,8 @@
         /* --- TOP BANNER --- */
         .top-banner {
             background-color: var(--left-col-bg);
-            height: 200px;
+            /* CRITICAL FIX */
+            height: 120px; 
             position: absolute;
             width: 66.666%; 
             top: 0;
@@ -94,7 +95,6 @@
         .name-title-area {
             position: absolute;
             top: 50%;
-            /* Moved left to align correctly with right column text */
             left: 35%; 
             transform: translateY(-50%);
             color: var(--text-dark);
@@ -116,7 +116,7 @@
         .left-col {
             background-color: var(--left-col-bg);
             padding: 2.5rem;
-            /* CRITICAL FIX: Reduced padding-top to shift content up */
+            /* CRITICAL FIX */
             padding-top: 10px; 
             position: relative;
             z-index: 5;
@@ -124,17 +124,18 @@
         .left-col h3 {
             font-size: 1.1rem;
             font-weight: 600;
-            margin-top: 2rem;
+            /* CRITICAL FIX */
+            margin-top: 1rem; 
             margin-bottom: 0.75rem;
             padding-bottom: 5px;
             border-bottom: 2px solid rgba(0, 0, 0, 0.1);
         }
 
-        /* --- PROFILE PICTURE (Interactive) --- */
+        /* --- PROFILE PICTURE --- */
         .picture-container {
             position: absolute;
-            /* CRITICAL FIX: Moved picture up */
-            top: 120px; 
+            /* CRITICAL FIX */
+            top: 60px; 
             left: 20px;
             z-index: 20;
         }
@@ -187,8 +188,8 @@
         /* --- RIGHT COLUMN --- */
         .right-col {
             padding: 2.5rem;
-            /* CRITICAL FIX: Reduced padding-top to align with the image */
-            padding-top: 100px; 
+            /* CRITICAL FIX */
+            padding-top: 50px; 
         }
         .right-col h2 {
             font-size: 1.5rem;
@@ -271,7 +272,6 @@
 
     <!-- Header Controls (Visible on screen, hidden when printing) -->
     <div class="header-controls">
-        <!-- REMOVED: Back to Portfolio Button -->
         <button class="btn-pdf" onclick="window.print()">
             <i class="fas fa-download"></i> Download as PDF
         </button>
@@ -286,7 +286,7 @@
                 <!-- Profile Picture Container (Accepts Upload) -->
                 <div class="picture-container">
                     <label for="file-upload">
-                        <!-- IMPORTANT: If your image is at the root of the serving folder, this is correct -->
+                        <!-- IMPORTANT: Ensure this image file is in the correct location on your server -->
                         <img id="profile-img" class="profile-pic" src="nati_modified.png" alt="Natnael Takele Profile Photo" style="cursor: pointer;">
                         <!-- Hidden input for file selection -->
                         <input type="file" id="file-upload" accept="image/*" style="display: none;">
@@ -418,7 +418,7 @@
             });
         }
         
-        // Final Functionality: PDF Print (The button handles window.print())
+        // Final Functionality: PDF Print (The button handler)
         document.querySelector('.btn-pdf').addEventListener('click', () => {
              // Set the filename before printing
              document.title = 'Natnael_Takele_CV';
